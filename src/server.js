@@ -47,7 +47,12 @@ app.use (require ('./routes/authentication'));
 
 
 //  Database
-require ('./models/index')
+const db = require("./models");
+db.sequelize.sync({ force: false }).then(() => {
+        console.log("Synchronized tables")
+    // console.log("Drop and re-sync db.");
+  });
+
 
 // Starting the server   
 app.listen (app.get('port'), () => {

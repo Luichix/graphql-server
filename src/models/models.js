@@ -1,51 +1,64 @@
-module.exports = (sequelize, Sequelize) => {
+module.exports = (sequelize, type) => {
     const DataTable = sequelize.define("staffData", {
       lastname: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       firstname: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       card: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       phone: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       typeContract: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       startContract: {
-        type: Sequelize.DATEONLY
+        type: type.DATEONLY
       },
       finishContract: {
-        type: Sequelize.DATEONLY
+        type: type.DATEONLY
       },
       area: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       job: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       monthlySalary: {
-        type: Sequelize.DECIMAL(10,2)
+        type: type.DECIMAL(10,2)
       },
       regime: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       workday: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       timeControl: {
-        type: Sequelize.BOOLEAN
+        type: type.BOOLEAN
       },
       paymentMethod: {
-        type: Sequelize.STRING
+        type: type.STRING
       },
       published: {
-        type: Sequelize.BOOLEAN
+        type: type.BOOLEAN
       }
     });
+
+    const filmTable = sequelize.define('film', {
+      id:{
+          type: type.INTEGER,
+          primaryKey: true,
+          autoIncrement: true
+      },
+      title: type.STRING,
+      description: type.STRING,
+      score: type.STRING,
+      director: type.STRING
+  });
   
-    return DataTable;
+  return filmTable, DataTable;
+
   };
