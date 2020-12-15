@@ -2,17 +2,7 @@ const express = require('express');
 const router = express.Router();
 const data = require("../controllers/controller.js");
 
-router.get('/', async (req, res) => {
-    res.send((
-        [
-            {
-                "id": 1,
-                "name": "Luichix ",
-                "username": "Router"
-            }
-        ]
-    ));
-});
+router.get('/', data.show);
 
 // Create a new data
 router.post('/', data.create);

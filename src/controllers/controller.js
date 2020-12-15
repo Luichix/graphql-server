@@ -2,6 +2,19 @@ const db = require("../models");
 const Data = db.database;
 const Op = db.Sequelize.Op;
 
+// Show data 
+exports.show = (req,res) => {
+    res.send((
+        [
+            {
+                "id": 1,
+                "name": "Luichix Show",
+                "username": "Router"
+            }
+        ]
+    ));
+}
+
 // Create and Save a new data
 exports.create = (req, res) => {
   // Validate request

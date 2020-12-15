@@ -14,7 +14,7 @@ require ('./lib/passport');
 
 // Settings 
 app.set ('port', process.env.PORT || 8081);
-var  corsOptions = { origin: "http://192.168.1.13:8080" };
+var  corsOptions = { origin: "http://localhost:8080" };
 
 // Middlewares 
 app.use (session({
@@ -49,7 +49,7 @@ app.use (require ('./routes/authentication'));
 //  Database
 const db = require("./models");
 db.sequelize.sync({ force: false }).then(() => {
-        console.log("Use tables database")
+        console.log("synchronized tables")
     // console.log("Drop and re-sync db.");
   });
 

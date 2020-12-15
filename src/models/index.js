@@ -20,6 +20,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.database = require("./models")(sequelize, Sequelize);
+db.database = require("./films")(sequelize,Sequelize)
 
 sequelize.authenticate()
   .then(() => {
