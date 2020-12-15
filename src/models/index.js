@@ -14,13 +14,11 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.passw
   }  
 });
 
-const db = {};
+ const dbModel = require("./models")
+ const filmModel = require("./films")
 
-db.Sequelize = Sequelize;
-db.sequelize = sequelize;
-
-db.database = require("./models")(sequelize, Sequelize);
-db.database = require("./films")(sequelize,Sequelize)
+ const Model = dbModel(sequelize,Sequelize)
+ const Film = filmModel(sequelize,Sequelize)
 
 sequelize.authenticate()
   .then(() => {
@@ -30,4 +28,13 @@ sequelize.authenticate()
     console.log('Sequelize is Not Connected')
   })
 
-module.exports = db;
+  sequelize.sync({ force: false }).then(() => {
+    console.log("synchronized tables")
+// console.log("Drop and re-sync db.");
+});
+
+
+module.exports = {
+  Model,
+  Film
+}
