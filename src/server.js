@@ -7,6 +7,7 @@ const passport = require('passport');
 const cors = require('cors');
 const bodyParser = require('body-parser');
 const { database } = require('../database/db.keys');
+const apiRouter = require('./routes/api')
 
 // Initializations
 const app = express();
@@ -40,9 +41,7 @@ app.use ((req,res,next)=> {
 });
 
 // |Routes
-app.use (require ('./routes')); 
-app.use (require ('./routes/authentication'));
-
+app.use ('/api',apiRouter); 
 
 //  Database
 const db = require("./models");
@@ -50,7 +49,6 @@ db.sequelize.sync({ force: false }).then(() => {
         console.log("Synchronized tables")
     // console.log("Drop and re-sync db.");
   });
-
 
 // Starting the server   
 app.listen (app.get('port'), () => {
