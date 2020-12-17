@@ -45,10 +45,6 @@ app.use ('/api',apiRouter);
 
 //  Database
 const db = require("./models");
-db.sequelize.sync({ force: false }).then(() => {
-        console.log("Synchronized tables")
-    // console.log("Drop and re-sync db.");
-  });
 
 // Starting the server   
 app.listen (app.get('port'), () => {

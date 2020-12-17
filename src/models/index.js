@@ -2,6 +2,9 @@ const dbConfig = require("../../database/db.config.js");
 
 const Sequelize = require("sequelize");
 
+const FilmModel = require('./films')
+const UserModel = require('./users')
+
 const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
   host: dbConfig.host,
   dialect: dbConfig.dialect,
@@ -15,12 +18,8 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.passw
   }  
 });
 
-const db = {}
-
-db.Sequelize = Sequelize
-db.sequelize = sequelize
-
-db.database = require("./films")(sequelize,Sequelize)
+const Film = FilmModel(sequelize,Sequelize)
+const User = UserModel(sequelize,Sequelize)
 
 sequelize.authenticate()
   .then(() => {
@@ -30,4 +29,11 @@ sequelize.authenticate()
     console.log('Sequelize is Not Connected')
   })
 
-module.exports = db;
+sequelize.sync({ force: false }).then(() => {
+    console.log("Synchronized tables")
+});
+
+module.exports = {
+  Film,
+  User
+};

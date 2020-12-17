@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const data = require('./../../controllers/controller');
+const data = require('./../../controllers/films');
 
 // Retrieve all data
 router.get("/", data.findAll);
