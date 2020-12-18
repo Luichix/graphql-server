@@ -10,4 +10,6 @@ router.post('/register',[
     check('email','El email debe estar correctamente').isEmail()
 ], user.create)
 
+router.post('/login', user.findOne)
+
 module.exports = router;

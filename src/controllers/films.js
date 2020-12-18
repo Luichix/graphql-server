@@ -1,6 +1,7 @@
 const {Film} = require("../models/index");
 
 exports.findAll = async (req, res) => {
+  console.log(req.usuarioId)
   const films = await Film.findAll();
   res.json(films); 
 };
