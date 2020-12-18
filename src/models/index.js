@@ -4,6 +4,7 @@ const Sequelize = require("sequelize");
 
 const FilmModel = require('./films')
 const UserModel = require('./users')
+const StaffModel = require('./staff')
 
 const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.password, {
   host: dbConfig.host,
@@ -20,6 +21,7 @@ const sequelize = new Sequelize(dbConfig.database, dbConfig.user, dbConfig.passw
 
 const Film = FilmModel(sequelize,Sequelize)
 const User = UserModel(sequelize,Sequelize)
+const Staff = StaffModel(sequelize,Sequelize)
 
 sequelize.authenticate()
   .then(() => {
@@ -35,5 +37,6 @@ sequelize.sync({ force: false }).then(() => {
 
 module.exports = {
   Film,
-  User
+  User,
+  Staff
 };

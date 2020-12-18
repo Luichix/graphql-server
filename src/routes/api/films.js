@@ -1,16 +1,12 @@
 const router = require('express').Router();
-const data = require('./../../controllers/films');
+const film = require('./../../controllers/films');
 
-// Retrieve all data
-router.get("/", data.findAll);
+router.get("/", film.findAll);
 
-// Create a new data
-router.post('/', data.create);
+router.post('/', film.create);
 
-// Update a data with id
-router.put("/:filmId", data.update);
+router.put("/:filmId", film.update);
 
-// Delete a data with id
-router.delete("/:filmId", data.delete);
+router.delete("/:filmId", film.delete);
 
 module.exports = router;
