@@ -19,7 +19,6 @@ module.exports = (sequelize,type) => {
         regime: type.STRING,
         workday: type.STRING,
         timeControl: type.BOOLEAN,
-        paymentMethod: type.STRING,
-        published: type.BOOLEAN
+        paymentMethod: type.STRING
       })
 }  
