@@ -1,29 +1,117 @@
+const { request, response } = require('express');
 const express = require ('express');
-const morgan = require ('morgan');
-const cors = require('cors');
-const apiRouter = require('./routes/api')
 
-// Initializations
 const app = express();
-
-// Settings 
-app.set ('port', process.env.PORT || 8081);
-var  corsOptions = { origin: "http://localhost:8080" };
-
-// Middlewares 
-app.use (morgan ('dev'));
-app.use (express.urlencoded({extended : false}));
 app.use (express.json ());
-app.use(cors(corsOptions));
 
-// |Routes
-app.use ('/api',apiRouter); 
+let notes = [
+    {
+      id: 1,
+      content: "HTML is easy",
+      date: "2019-05-30T17:30:31.098Z",
+      important: true
+    },
+    {
+      id: 2,
+      content: "Browser can execute only Javascript",
+      date: "2019-05-30T18:39:34.091Z",
+      important: false
+    },
+    {
+      id: 3,
+      content: "GET and POST are the most important methods of HTTP protocol",
+      date: "2019-05-30T19:20:14.298Z",
+      important: true
+    }
+]
 
-//  Database
-const db = require("./models");
+app.get('/', (request,response) => {
+    response.send('<h1>Hello World</h1>')
+})
 
-// Starting the server   
-app.listen (app.get('port'), () => {
-    console.log ('Server on port', app.get('port'));
+app.get('/api/notes', (request,response)=>{
+    response.json(notes)
+})
 
-});
+app.get('/api/notes/:id', (request,response)=>{
+    const id = Number(request.params.id);
+    const note = notes.find(note => note.id===id);
+    
+    if(note){
+        response.json(note)
+    } else {
+        response.status(404).end()
+    }
+})
+
+app.delete('/api/notes/:id', (request,response)=> {
+    const id = Number(request.params.id);
+    notes = notes.find(note => note.id !== id)
+    
+    response.status(204).end()
+})
+
+const generateId = () => {  
+    const maxId = notes.length > 0
+        ? Math.max(...notes.map(n => n.id))
+        : 0
+    return maxId + 1
+}
+
+app.post('/api/notes', (request, response) => {
+    const body = request.body
+    
+    if(!body.content){
+        return response.status(400).json({
+            error: 'content missing'
+        })
+    }
+
+    const note ={
+        content: body.content,
+        important: body.important || false,
+        date: new Date(),
+        id: generateId()
+    }
+
+    notes = notes.concat(note)
+
+    response.json(note)
+})
+
+
+const requestLogger = (request, response, next) =>{
+    console.log('Method:', request.method)
+    console.log('Path:  ', request.path)
+    console.log('Body:  ', request.body)
+    console.log('---')
+    next()
+}
+
+app.use(requestLogger)
+
+const PORT = 3001
+app.listen (PORT, () => {
+    console.log (`Server running on port ${PORT}`);
+})
+
+// const morgan = require ('morgan');
+// const cors = require('cors');
+// const apiRouter = require('./routes/api')
+
+
+// // Settings 
+// app.set ('port', process.env.PORT || 8081);
+// var  corsOptions = { origin: "http://localhost:8080" };
+
+// // Middlewares 
+// app.use (morgan ('dev'));
+// app.use (express.urlencoded({extended : false}));
+// app.use(cors(corsOptions));
+
+// // |Routes
+// app.use ('/api',apiRouter); 
+
+// //  Database
+// const db = require("./models");
+
