@@ -1,4 +1,3 @@
-const { request, response } = require('express');
 const express = require ('express');
 
 const app = express();
@@ -24,6 +23,9 @@ let notes = [
         important: true
     }
 ]
+
+const cors = require('cors');
+app.use(cors());
 
 const requestLogger = (request, response, next) =>{
     console.log('Method:', request.method)
@@ -102,7 +104,6 @@ app.listen (PORT, () => {
 })
 
 // const morgan = require ('morgan');
-// const cors = require('cors');
 // const apiRouter = require('./routes/api')
 
 
@@ -113,7 +114,6 @@ app.listen (PORT, () => {
 // // Middlewares 
 // app.use (morgan ('dev'));
 // app.use (express.urlencoded({extended : false}));
-// app.use(cors(corsOptions));
 
 // // |Routes
 // app.use ('/api',apiRouter); 
