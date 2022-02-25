@@ -102,22 +102,3 @@ const PORT = process.env.PORT || 3001
 app.listen (PORT, () => {
     console.log (`Server running on port ${PORT}`);
 })
-
-// const morgan = require ('morgan');
-// const apiRouter = require('./routes/api')
-
-
-// // Settings 
-// app.set ('port', process.env.PORT || 8081);
-// var  corsOptions = { origin: "http://localhost:8080" };
-
-// // Middlewares 
-// app.use (morgan ('dev'));
-// app.use (express.urlencoded({extended : false}));
-
-// // |Routes
-// app.use ('/api',apiRouter); 
-
-// //  Database
-// const db = require("./models");
-
