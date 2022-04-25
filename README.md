@@ -1,1 +1,1 @@
-# Server-Nodejs-Express-Sequelize
+# GraphQL-Server
