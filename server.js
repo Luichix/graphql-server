@@ -1,41 +1,43 @@
-const { ApolloServer, gql } = require('apollo-server')
+const express = require('express')
+const { ApolloServer, gql } = require('apollo-server-express')
+const { ApolloServerPluginDrainHttpServer } = require('apollo-server-core')
 
-let persons = [
+const persons = [
   {
-    name: "Arto Hellas",
-    phone: "040-123543",
-    street: "Tapiolankatu 5 A",
-    city: "Espoo",
-    id: "3d594650-3436-11e9-bc57-8b80ba54c431"
-  },
-  {
-    name: "Matti Luukkainen",
-    phone: "040-432342",
-    street: "Malminkaari 10 A",
-    city: "Helsinki",
-    id: '3d599470-3436-11e9-bc57-8b80ba54c431'
-  },
-  {
-    name: "Venla Ruuska",
-    street: "Nallemäentie 22 C",
-    city: "Helsinki",
-    id: '3d599471-3436-11e9-bc57-8b80ba54c431'
-  },
+    mid: '3d594650-3436-11e9-bc57-8b80ba54c431',
+    uid: 'O2HVhBuo3rfbyxirZgKebNridkE2',
+    name: 'Luis Reynaldo',
+    email: 'luisreynaldo.pch@gmail.com',
+    phoneNumber: '50584555589',
+    industry: 'Software',
+    employeeCount: '10000',
+    country: 'Nicaragua',
+    city: 'Chinandega',
+    address: 'Hotel Glomar 3 1/2 al sur',
+    company: 'ChessLand'
+  }
 ]
 
 const typeDefs = gql`
   type Person {
-    name: String!
-    phone: String
-    street: String!
-    city: String! 
-    id: ID!
+    uid: String
+    name: String
+    email: String
+    phoneNumber: String
+    industry: String
+    employeeCount: String
+    city: String
+    address: String
+    company: String
+    country: String
+    id: String
   }
 
   type Query {
     personCount: Int!
     allPersons: [Person!]!
     findPerson(name: String!): Person
+    userInfo(uid: String): Person 
   }
 `
 
@@ -44,15 +46,27 @@ const resolvers = {
     personCount: () => persons.length,
     allPersons: () => persons,
     findPerson: (root, args) =>
-      persons.find(p => p.name === args.name)
+      persons.find(p => p.name === args.name),
+    userInfo: (root, args) =>
+      persons.find(p => p.uid === args.uid)
   }
 }
+async function startApolloServer () {
+  const app = express()
+  const httpServer = (app)
+  const server = new ApolloServer({
+    typeDefs,
+    resolvers,
+    plugins: [ApolloServerPluginDrainHttpServer({ httpServer })]
+  })
 
-const server = new ApolloServer({
-  typeDefs,
-  resolvers,
-})
+  await server.start()
 
-server.listen().then(({ url }) => {
-  console.log(`Server ready at ${url}`)
-})
+  // Mount Apollo middleware here.
+  server.applyMiddleware({ app, path: '/graphql', cors: true })
+  await new Promise(resolve => httpServer.listen({ port: 4000 }, resolve))
+  console.log(`🚀 Server ready at http://localhost:4000${server.graphqlPath}`)
+  return { server, app }
+}
+
+startApolloServer()
