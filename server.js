@@ -32,6 +32,9 @@ const typeDefs = gql`
     country: String
     id: String
   }
+  type UpdatePerson {
+    modified: Boolean
+  }
 
   type Query {
     personCount: Int!
@@ -39,6 +42,30 @@ const typeDefs = gql`
     findPerson(name: String!): Person
     userInfo(uid: String): Person 
   }
+  type Mutation {
+    updateUser(
+      uid: String!, 
+      name: String, 
+      email: String, 
+      phoneNumber: String, 
+      industry: String, 
+      employeeCount: String, 
+      country: String, 
+      city: String, 
+      address: String, 
+      company: String): UpdatePerson
+    editBasic(
+      uid: String!, 
+      name: String!, 
+      email: String!,
+      company: String!, 
+      phoneNumber: String!): Person
+     editAddress(
+      uid: String!, 
+      country: String!, 
+      city: String!,
+      address: String!): Person
+    }
 `
 
 const resolvers = {
@@ -49,6 +76,51 @@ const resolvers = {
       persons.find(p => p.name === args.name),
     userInfo: (root, args) =>
       persons.find(p => p.uid === args.uid)
+  },
+  Mutation: {
+    updateUser: (root, args) => {
+      const person = persons.find(p => p.uid === args.uid)
+      if (person) {
+        person.name = args.name
+        person.email = args.email
+        person.phoneNumber = args.phoneNumber
+        person.industry = args.industry
+        person.employeeCount = args.employeeCount
+        person.country = args.country
+        person.city = args.city
+        person.address = args.address
+        person.company = args.company
+        return { modified: true }
+      }
+      return { modified: false }
+    },
+    editBasic: (root, args) => {
+      const personIndex = persons.findIndex(p => p.uid === args.uid)
+      if (personIndex === -1) return null
+      const person = persons[personIndex]
+      const updatePerson = {
+        ...person,
+        name: args.name,
+        email: args.email,
+        company: args.company,
+        phoneNumber: args.phoneNumber
+      }
+      persons[personIndex] = updatePerson
+      return updatePerson
+    },
+    editAddress: (root, args) => {
+      const personIndex = persons.findIndex(p => p.uid === args.uid)
+      if (personIndex === -1) return null
+      const person = persons[personIndex]
+      const updatePerson = {
+        ...person,
+        country: args.country,
+        city: args.city,
+        address: args.address
+      }
+      persons[personIndex] = updatePerson
+      return updatePerson
+    }
   }
 }
 async function startApolloServer () {
