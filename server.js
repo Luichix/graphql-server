@@ -11,7 +11,7 @@ const persons = [
     phoneNumber: '50584555589',
     industry: 'Software',
     employeeCount: '10000',
-    country: 'Nicaragua',
+    country: 'US',
     city: 'Chinandega',
     address: 'Hotel Glomar 3 1/2 al sur',
     company: 'ChessLand'
