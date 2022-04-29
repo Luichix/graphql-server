@@ -22,7 +22,8 @@
     "cors": "^2.8.5",
     "dotenv": "^16.0.0",
     "express": "^4.17.1",
-    "graphql": "^16.4.0"
+    "graphql": "^16.4.0",
+    "json-server": "^0.17.0"
   },
   "devDependencies": {
     "cross-env": "^7.0.3",
@@ -30,6 +31,8 @@
     "standard": "^17.0.0"
   },
   "eslintConfig": {
-    "extends": ["./node_modules/standard/eslintrc.json"]
+    "extends": [
+      "./node_modules/standard/eslintrc.json"
+    ]
   }
 }
