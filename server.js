@@ -33,7 +33,7 @@ const typeDefs = gql`
     id: String
   }
   type UpdatePerson {
-    modified: Boolean
+    modified: String
   }
 
   type Query {
@@ -79,20 +79,12 @@ const resolvers = {
   },
   Mutation: {
     updateUser: (root, args) => {
-      const person = persons.find(p => p.uid === args.uid)
-      if (person) {
-        person.name = args.name
-        person.email = args.email
-        person.phoneNumber = args.phoneNumber
-        person.industry = args.industry
-        person.employeeCount = args.employeeCount
-        person.country = args.country
-        person.city = args.city
-        person.address = args.address
-        person.company = args.company
-        return { modified: true }
-      }
-      return { modified: false }
+      const personIndex = persons.findIndex(p => p.uid === args.uid)
+      if (personIndex === -1) return { modified: 'false' }
+      const person = persons[personIndex]
+      const newPerson = { ...person, ...args }
+      persons[personIndex] = newPerson
+      return { modified: 'modified' }
     },
     editBasic: (root, args) => {
       const personIndex = persons.findIndex(p => p.uid === args.uid)
