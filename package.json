@@ -8,9 +8,8 @@
   },
   "scripts": {
     "test": "jest",
-    "start": "node index.js",
-    "dev": "nodemon index.js",
-    "gql": "nodemon server.js"
+    "express": "nodemon src/express.js",
+    "apollo": "nodemon src/apollo.js"
   },
   "keywords": [],
   "author": "",
