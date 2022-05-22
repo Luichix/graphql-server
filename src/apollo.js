@@ -15,6 +15,11 @@ const persons = [
     city: 'Chinandega',
     address: 'Hotel Glomar 3 1/2 al sur',
     company: 'ChessLand',
+    integrationId: 'integration',
+    serviceInstanceId: 'service',
+    workspaceId: 'workspace',
+    busy: false,
+    description: 'description',
   },
 ]
 
@@ -32,6 +37,15 @@ const typeDefs = gql`
     country: String
     id: String
   }
+  type Inventory {
+    uid: String
+    integrationId: String
+    serviceInstanceId: String
+    workspaceId: String
+    busy: Boolean
+    name: String
+    description: String
+  }
 
   type AddPerson {
     mid: String
@@ -46,6 +60,7 @@ const typeDefs = gql`
     allPersons: [Person!]!
     findPerson(name: String!): Person
     userInfo(uid: String): Person
+    inventoryInfo(uid: String): Inventory
   }
   type Mutation {
     addUser(
@@ -82,6 +97,7 @@ const resolvers = {
     allPersons: () => persons,
     findPerson: (root, args) => persons.find((p) => p.name === args.name),
     userInfo: (root, args) => persons.find((p) => p.uid === args.uid),
+    inventoryInfo: (root, args) => persons.find((p) => p.uid === args.uid),
   },
   Mutation: {
     addUser: (root, args) => {
