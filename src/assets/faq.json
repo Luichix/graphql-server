@@ -1,0 +1,194 @@
+{
+  "en": {
+    "Basics": [
+      {
+        "ask": "What methods of payments are supported?",
+        "answer": [
+          "You can purchase the themes on Bootstrap Themes via any major credit/debit card (via Stripe) or with your Paypal account. We don't support cryptocurrencies or invoicing at this time."
+        ]
+      },
+      {
+        "ask": "Can I cancel at anytime?",
+        "answer": [
+          "If you'd like a refund please reach out to us at ",
+          "themes@getbootstrap.com",
+          ". If you need technical help with the theme before a refund please reach out to the seller first and they can get in touch with us if they're unable to resolve the issue."
+        ]
+      },
+      {
+        "ask": "How do I get a receipt for my purchase?",
+        "answer": [
+          "You'll receive an email from Bootstrap themes once your purchase is complete."
+        ]
+      },
+      {
+        "ask": "Which license do I need?",
+        "answer": [
+          "There are three license types -",
+          "Standard",
+          " ",
+          "Multisite",
+          " and ",
+          "Extended",
+          ". We've provided the table below for a quick look at the difference between the them, as well as a few examples of ways each license could be used. If you'd like more of the nitty-gritty details you can find them below and always feel free to reach out with any questions you have at ",
+          "themes@getbootstrap.com",
+          "."
+        ]
+      },
+      {
+        "ask": "How do I get access to a theme I purchased?",
+        "answer": [
+          "You'll receive an email from Bootstrap themes once your purchase is complete."
+        ]
+      },
+      {
+        "ask": "Upgrade License Type",
+        "answer": [
+          "There may be times when you need to upgrade your license from the original type you purchased and we have a solution that ensures you can apply your original purchase cost to the new license purchase."
+        ]
+      }
+    ],
+    "Support": [
+      {
+        "ask": "How do I get help with the theme I purchased?",
+        "answer": [
+          "Technical support for each theme is given directly by the creator of the theme. You'll be given a link to contact their support in a couple places:"
+        ],
+        "list": [
+          "Your confirmation email: Each theme in your confirmation email will have both the download link for your theme, and a \"support\" link which will connect you directly with the sellers support system or email.",
+          "While logged in to your account go to Purchases < Click the Order # < Get Support"
+        ]
+      },
+      {
+        "ask": "What version of Bootstrap are the themes built on?",
+        "answer": [
+          "All of the themes are built on versions of Bootstrap v4, currently all are on the v4.0.0 stable build. As more Bootstrap updates are launched the themes will be update as needed and as new features and bug fixes come out. You will want to download any updates that come out and update your installation as required."
+        ]
+      },
+      {
+        "ask": "What if I have a question that isn't answered here?",
+        "answer": [
+          "For anything we haven't covered feel free to reach out to the Bootstrap Themes team at ",
+          "themes@getbootstrap.com",
+          ". !We're here to help."
+        ]
+      },
+      {
+        "ask": "Uh oh! Where's my theme download?",
+        "answer": [
+          "We just switched to a whole new platform and if you're a customer from our previous platform, we will be migrating you to the new platform, but in the meantime your download link for our old platform won't work."
+        ]
+      }
+    ],
+    "Paymets": [
+      {
+        "ask": "What methods of payments are supported?",
+        "answer": [
+          "You can purchase the themes on Bootstrap Themes via any major credit/debit card (via Stripe) or with your Paypal account. We don't support cryptocurrencies or invoicing at this time."
+        ]
+      },
+      {
+        "ask": "How do I get a receipt for my purchase?",
+        "answer": [
+          "You'll receive an email from Bootstrap themes once your purchase is complete."
+        ]
+      },
+      {
+        "ask": "How can I get a refund?",
+        "answer": [
+          "If you'd like a refund please reach out to us at ",
+          "themes@getbootstrap.com",
+          ". If you need technical help with the theme before a refund please reach out to the seller first and they can get in touch with us if they're unable to resolve the issue."
+        ]
+      }
+    ]
+  },
+  "es": {
+    "Basics": [
+      {
+        "ask": "¿Qué métodos de pago están soportados?",
+        "answer": [
+          "Puedes comprar los temas en Bootstrap Themes a través de cualquier tarjeta de crédito o débito (via Stripe) o con tu cuenta de Paypal. No soportamos criptomonedas o facturación en este momento."
+        ]
+      },
+      {
+        "ask": "¿Puedo cancelar en cualquier momento?",
+        "answer": [
+          "Si quieres un reembolso, por favor contacta con nosotros a ",
+          "",
+          ". Si necesitas ayuda técnica con el tema antes de un reembolso, por favor contacta con el vendedor primero y ellos pueden ponerse en contacto con nosotros si no pueden resolver el problema."
+        ]
+      },
+      {
+        "ask": "¿Cómo obtengo una factura para mi compra?",
+        "answer": [
+          "Recibirás un correo electrónico de Bootstrap themes una vez que tu compra se haya completado."
+        ]
+      },
+      {
+        "ask": "¿Qué licencia necesito?",
+        "answer": [
+          "Hay tres tipos de licencias -",
+          "Estándar",
+          " ",
+          "Multisite",
+          " y ",
+          "Extendida",
+          ". Hemos proporcionado la tabla siguiente para una vista rápida de las diferencias entre los temas, así como unos ejemplos de cómo cada licencia puede ser utilizada. Si quieres más detalles de la nitty-gritty de esto puedes encontrarlo a continuación y siempre puedes contactarnos a ",
+          "",
+          "."
+        ]
+      },
+      {
+        "ask": "¿Cómo obtengo acceso a un tema que he comprado?",
+        "answer": [
+          "Recibirás un correo electrónico de Bootstrap themes una vez que tu compra se haya completado."
+        ]
+      },
+      {
+        "ask": "¿Qué puedo hacer si quiero actualizar mi licencia?",
+        "answer": [
+          "Hay veces que necesitas actualizar tu licencia de la versión original que compraste y tenemos una solución que asegura que puedes aplicar tu costo original a la nueva compra de licencia."
+        ]
+      }
+    ],
+    "Support": [
+      {
+        "ask": "¿Cómo puedo obtener ayuda con el tema que he comprado?",
+        "answer": [
+          "El soporte técnico para cada tema es dado directamente por el creador del tema. Te darás un enlace a contactar con el soporte del vendedor en unas pocas ubicaciones:"
+        ],
+        "list": [
+          "Tu correo electrónico de confirmación: Cada tema en tu correo electrónico de confirmación tendrá un enlace de descarga para tu tema, y un enlace \"soporte\" que conectará directamente con el soporte del vendedor o correo electrónico.",
+          "Mientras estés conectado a tu cuenta, ve a Compras < Haga clic en el número de orden < Obtener soporte"
+        ]
+      },
+      {
+        "ask": "¿Qué versión de Bootstrap son los temas construidos en?",
+        "answer": [
+          "Todos los temas son construidos en versiones de Bootstrap v4, actualmente todos son en la versión v4.0.0 estable. Así como más Bootstrap actualiza, los temas se actualizarán y se añadirán nuevas características y mejoras. Necesitarás descargar cualquier actualización que venga y actualizar tu instalación según sea necesario."
+        ]
+      },
+      {
+        "ask": "¿Qué métodos de pago están soportados?",
+        "answer": [
+          "Puedes comprar los temas en Bootstrap Themes a través de cualquier tarjeta de crédito o débito (via Stripe) o con tu cuenta de Paypal. No soportamos criptomonedas o facturación en este momento."
+        ]
+      },
+      {
+        "ask": "¿Cómo puedo obtener una factura para mi compra?",
+        "answer": [
+          "Recibirás un correo electrónico de Bootstrap themes una vez que tu compra se haya completado."
+        ]
+      },
+      {
+        "ask": "¿Cómo puedo cancelar en cualquier momento?",
+        "answer": [
+          "Si quieres un reembolso, por favor contacta con nosotros a ",
+          "",
+          ". Si necesitas ayuda técnica con el tema antes de un reembolso, por favor contacta con el vendedor primero y ellos pueden ponerse en contacto con nosotros si no pueden resolver el problema."
+        ]
+      }
+    ]
+  }
+}
