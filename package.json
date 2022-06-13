@@ -9,12 +9,14 @@
   "scripts": {
     "test": "jest",
     "express": "nodemon src/express.js",
-    "apollo": "nodemon src/apollo.js"
+    "apollo": "nodemon src/apollo.js",
+    "yoga": "nodemon src/yoga.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@graphql-yoga/node": "^2.9.1",
     "apollo-server": "^3.6.7",
     "apollo-server-core": "^3.6.7",
     "apollo-server-express": "^3.6.7",
