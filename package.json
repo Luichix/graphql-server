@@ -10,7 +10,8 @@
     "test": "jest",
     "express": "nodemon src/express.js",
     "apollo": "nodemon src/apollo.js",
-    "yoga": "nodemon src/yoga.js"
+    "yoga": "nodemon src/yoga.js",
+    "createJson": "node ./src/scripts/createJson.js"
   },
   "keywords": [],
   "author": "",
