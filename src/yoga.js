@@ -7,6 +7,10 @@ const { WebSocketServer } = require('ws')
 const { useServer } = require('graphql-ws/lib/use/ws')
 const { PubSub } = require('graphql-subscriptions')
 
+const SUBSCRIPTION_EVENTS = {
+  MESSAGE_ADDED: 'MESSAGE_ADDED',
+}
+
 const messages = [
   {
     _id: 6,
@@ -106,53 +110,42 @@ const typeDefs = gql`
     user: User!
   }
   type Query {
-    messages: [Message!]
+    allMessages: [Message]!
   }
   type Mutation {
-    postMessage(text: String!, createdAt: String!): ID!
+    addMessage(text: String!, createdAt: String!): Message
   }
   type Subscription {
-    messages: [Message!]
+    messageAdded: Message!
   }
 `
 
-// const subscribers = []
-// const onMessagesUpdates = (fn) => subscribers.push(fn)
-
 const resolvers = {
   Query: {
-    messages: () => messages,
+    allMessages: () => messages,
   },
   Mutation: {
-    postMessage: (parent, { text, createdAt }) => {
+    addMessage: (parent, { text, createdAt }) => {
       const user = {
         _id: 'uid',
         name: 'Client One',
         avatar: 'https://i.pravatar.cc/300',
       }
       const _id = messages.length + 1
-      messages.unshift({ _id, text, createdAt, user })
-      pubsub.publish('messages', { messages })
-      // subscribers.forEach((fn) => fn())
-      return _id
+      const message = { _id, text, createdAt, user }
+      messages.unshift(message)
+      pubsub.publish(SUBSCRIPTION_EVENTS.MESSAGE_ADDED, {
+        messageAdded: message,
+      })
+      return message
     },
   },
   Subscription: {
-    messages: {
-      subscribe: () => pubsub.asyncIterator('messages'),
+    messageAdded: {
+      subscribe: () => pubsub.asyncIterator(SUBSCRIPTION_EVENTS.MESSAGE_ADDED),
     },
   },
 }
-// Subscription: {
-//   messages: {
-//     subscribe: (parent, args, { pubsub }) => {
-//       const channel = Math.random().toString(36).substring(2, 15)
-//       onMessagesUpdates(() => pubsub.publish(channel, { messages }))
-//       setTimeout(() => pubsub.publish(channel, { messages }), 0)
-//       return pubsub.asyncIterator(channel)
-//     },
-//   },
-// },
 
 const startApolloServer = async () => {
   const app = express()
